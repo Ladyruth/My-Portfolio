@@ -91,17 +91,57 @@ h4 {
     letter-spacing: -0.02em;
 }
 
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--text-primary);
+    border-radius: 2px;
+}
+
 .nav-links a {
     color: var(--text-secondary);
     text-decoration: none;
     margin-left: 2rem;
     font-size: 0.95rem;
     transition: var(--transition-smooth);
-    font-weight: 500;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    display: inline-block;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    /* Adjust distance from text */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: var(--text-primary);
+    color: #BC3CD8;
+    /* Using the bright purple/pink from your gradient */
+}
+
+.nav-links a:hover::after {
+    width: 16px;
+    /* The short dash length */
 }
 
 /* -------------------
@@ -118,20 +158,23 @@ h4 {
 }
 
 
-
 .hero-title {
     font-size: clamp(3rem, 7vw, 5.5rem);
     letter-spacing: -0.02em;
     margin-bottom: 2rem;
+    font-weight: 100;
+}
+
+.bold-text {
     font-weight: 600;
 }
 
 .hero-subtitle {
-    font-size: 1rem;
+    font-size: 1.125rem;
     color: var(--text-secondary);
-    max-width: 650px;
+    max-width: 60%;
     margin-bottom: 3.5rem;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 /* Buttons */
@@ -155,12 +198,17 @@ h4 {
 }
 
 .btn-primary {
-    background: var(--text-primary);
-    color: var(--bg-color);
-    border: 1px solid transparent;
+    background: linear-gradient(90deg, #BC3CD8, #C54B8C, #bc3cd8);
+    background-size: 200% 100%;
+    background-position: left;
+    color: var(--text-primary);
+
+    transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+
 .btn-primary:hover {
+    background-position: right;
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
@@ -186,36 +234,9 @@ h4 {
     gap: 1rem;
 }
 
-.mouse {
-    width: 24px;
-    height: 38px;
-    border: 2px solid var(--text-secondary);
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    padding-top: 6px;
-    opacity: 0.6;
-}
 
-.wheel {
-    width: 4px;
-    height: 8px;
-    background: var(--text-secondary);
-    border-radius: 2px;
-    animation: scrollMouse 2s cubic-bezier(0.15, 0.41, 0.69, 0.94) infinite;
-}
 
-@keyframes scrollMouse {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
 
-    100% {
-        transform: translateY(14px);
-        opacity: 0;
-    }
-}
 
 /* -------------------
    SECTIONS & UTILITIES 
@@ -298,8 +319,8 @@ h4 {
 }
 
 .tools-images {
-    width: 50px;
-    height: 50px;
+    width: 64px;
+    height: 64px;
     border-radius: 999px;
     padding: 8px;
 }
@@ -310,9 +331,7 @@ h4 {
     object-fit: contain;
 }
 
-.white-bg {
-    background-color: white;
-}
+
 
 .read-more {
     display: inline-block;
@@ -408,12 +427,6 @@ h4 {
     color: var(--text-primary);
 }
 
-@media (max-width: 900px) {
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 4rem;
-    }
-}
 
 /* -------------------
    WORKS GRID & CARDS
@@ -494,12 +507,12 @@ h4 {
    FOOTER SECTION 
 ------------------- */
 .footer {
-    padding: 8rem 5% 3rem;
+    padding: 3rem 5%;
     border-top: 1px solid var(--border-color);
 }
 
 .footer-container {
-    max-width: 1200px;
+
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -564,7 +577,24 @@ h4 {
     font-size: 0.9rem;
 }
 
+/* -------------------
+   RESPONSIVE DESIGN 
+------------------- */
 @media (max-width: 900px) {
+    .about-grid {
+        flex-direction: column;
+        /* Fixed from incorrect grid usage to flex row toggle */
+    }
+
+    .about-intro,
+    .my-pictures {
+        width: 100%;
+    }
+
+    .hero-subtitle {
+        max-width: 80%;
+    }
+
     .footer-top {
         flex-direction: column;
         align-items: flex-start;
@@ -579,5 +609,117 @@ h4 {
     .footer-links {
         flex-wrap: wrap;
         gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+        position: relative;
+        z-index: 101;
+        /* Keeps the hamburger above the sliding menu */
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+        padding: 1.5rem 5%;
+    }
+
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        /* Hides off-screen to the right by default */
+        top: 0;
+        height: 100vh;
+        width: 50%;
+        min-width: 250px;
+        /* Ensure it stays readable on narrow phones */
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        background-color: var(--surface-color);
+        text-align: left;
+        transition: right 0.4s ease-in-out;
+        border-left: 1px solid var(--border-color);
+        z-index: 100;
+        padding-top: 5rem;
+        /* Reset old left attribute */
+        left: auto;
+    }
+
+    .nav-links.active {
+        right: 0;
+        /* Slides into view */
+    }
+
+    .nav-links a {
+        display: block;
+        margin: 1rem 1rem;
+        /* Added spacing to fill height beautifully */
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    .hero {
+        padding-top: 7rem;
+    }
+
+    .hero-subtitle {
+        max-width: 100%;
+    }
+
+    .skill-row {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: flex-start;
+    }
+
+    .skills-list {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .works-grid {
+        /* Works grid is minimum 320px, to avoid tiny mobile overflow: */
+        grid-template-columns: 1fr;
+    }
+
+    .my-pictures {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .pictures-wrapper {
+        height: auto;
+    }
+
+    .section-header h2 {
+        font-size: 2.25rem;
     }
 }
