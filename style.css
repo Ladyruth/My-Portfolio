@@ -91,6 +91,10 @@ h4 {
     letter-spacing: -0.02em;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .hamburger {
     display: none;
     cursor: pointer;
@@ -152,9 +156,9 @@ h4 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 5%;
+    padding: 7rem 5% 1rem;
     position: relative;
-    padding-top: 7rem;
+
 }
 
 
@@ -242,7 +246,7 @@ h4 {
    SECTIONS & UTILITIES 
 ------------------- */
 .works {
-    padding: 8rem 5%;
+    padding: 4rem 5%;
     min-height: 100vh;
 }
 
@@ -290,7 +294,7 @@ h4 {
    ABOUT SECTION 
 ------------------- */
 .about-section {
-    padding: 3rem 5%;
+    padding: 4rem 5%;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -314,9 +318,11 @@ h4 {
 .about-text {
     font-size: 1.15rem;
     margin-bottom: 2.5rem;
-    max-width: 500px;
+    width: 90%;
     line-height: 1.8;
 }
+
+
 
 .tools-images {
     width: 64px;
@@ -359,7 +365,7 @@ h4 {
 
 .pictures-wrapper {
     width: 100%;
-    height: 50%;
+    max-height: 30%;
     border-radius: 1rem;
 }
 
@@ -435,43 +441,56 @@ h4 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 3rem;
-    align-items: start;
+    align-items: stretch;
 }
 
 .work-card {
-    display: block;
-    background: var(--surface-color);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    background: #252528;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 2rem;
     text-decoration: none;
     color: var(--text-primary);
     transition: var(--transition-smooth);
-    overflow: hidden;
     position: relative;
     cursor: pointer;
+    min-height: 480px;
 }
 
 .work-card:hover {
     transform: translateY(-4px);
     border-color: rgba(255, 255, 255, 0.15);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    background: #18181A;
+    background: #2A2A2D;
+}
+
+.work-tags {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    color: #e0e0e0;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
 }
 
 .work-image-container {
     width: 100%;
-    height: 240px;
-    border-radius: 12px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    background: transparent;
     overflow: hidden;
-    margin-bottom: 1.5rem;
-    background: #111;
 }
 
 .work-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    max-height: 280px;
+    object-fit: contain;
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -479,28 +498,22 @@ h4 {
     transform: scale(1.05);
 }
 
+.work-info {
+    margin-top: auto;
+}
+
 .work-info h3 {
+    font-family: var(--font-heading);
     font-size: 1.4rem;
+    font-weight: 700;
     margin-bottom: 0.5rem;
+    color: #ffffff;
 }
 
 .work-info p {
-    color: var(--text-secondary);
+    color: #d1d1d1;
     font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-}
-
-.view-project {
-    display: inline-block;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    transition: var(--transition-smooth);
-}
-
-.work-card:hover .view-project {
-    color: var(--text-primary);
-    transform: translateX(5px);
+    margin-bottom: 0;
 }
 
 /* -------------------
@@ -575,6 +588,245 @@ h4 {
 .footer-copyright {
     color: var(--text-secondary);
     font-size: 0.9rem;
+}
+
+/* -------------------
+   PREMIUM CASE STUDY (Converseo)
+------------------- */
+.cs-premium-main {
+    padding-top: 10rem;
+    padding-bottom: 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.cs-hero-wrapper {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.cs-pill {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    border-radius: 100px;
+    background: rgba(188, 60, 216, 0.1);
+    color: #BC3CD8;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(188, 60, 216, 0.2);
+}
+
+.cs-huge-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-heading);
+}
+
+.cs-hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+}
+
+.cs-bento-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 3rem;
+    margin-bottom: 8rem;
+    text-align: left;
+}
+
+.meta-block h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.meta-block p {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.cs-split-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 4rem;
+    margin-bottom: 8rem;
+    align-items: start;
+}
+
+.cs-section-title {
+    font-size: 2.5rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+}
+
+.cs-text-body {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.cs-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 8rem;
+}
+
+.cs-image-grid.featured {
+    grid-template-columns: 1fr;
+    margin-bottom: 2rem;
+}
+
+.cs-image-card {
+    background: #151518;
+    border-radius: 16px;
+    overflow: hidden;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    position: relative;
+    transition: transform 0.4s ease;
+}
+
+.cs-image-card:hover {
+    transform: translateY(-5px);
+}
+
+.cs-image-card.small {
+    min-height: 350px;
+}
+
+.cs-image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cs-placeholder-text {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: monospace;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 2rem;
+}
+
+.cs-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 8rem;
+}
+
+.cs-feature-card {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem;
+}
+
+.cs-feature-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+/* -------------------
+   MINIMAL CONTACT LIST 
+------------------- */
+.minimal-contact {
+    margin-top: 4rem;
+}
+
+.minimal-contact-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.minimal-contact-header h3 {
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.minimal-contact-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+.minimal-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    list-style: none;
+}
+
+.minimal-contact-list li::before {
+    display: none;
+}
+
+.minimal-contact-link {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.minimal-contact-link span {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    transition: transform 0.3s ease;
+}
+
+.minimal-contact-link:hover {
+    color: #BC3CD8;
+}
+
+.minimal-contact-link:hover span {
+    transform: translate(3px, -3px);
+    color: #BC3CD8;
+}
+
+.copy-feedback {
+    font-size: 0.85rem;
+    color: #4CAF50;
+    background: rgba(76, 175, 80, 0.1);
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.copy-feedback.show {
+    opacity: 1;
 }
 
 /* -------------------
