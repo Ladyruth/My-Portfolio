@@ -24,7 +24,7 @@
             <span class="bar"></span>
         </div>
         <div class="nav-links">
-            <a class="hidden" href="about.html">About</a>
+            <a href="about.html">About</a>
             <a href="index.html#work">Selected Works</a>
             <a href="#contact">Contact</a>
             <a href="#contact">Resume</a>
@@ -33,7 +33,7 @@
 
     <main>
         <!-- About Section -->
-        <section class="about-section" id="about" style="padding-top: 8rem; border-top: none;">
+        <section class="about-section no-border-top" id="about">
             <div class="about-grid">
 
                 <div class="about-intro fade-up">
@@ -137,17 +137,17 @@
                         <!-- Minimal Contact Section -->
                         <div class="minimal-contact fade-up delay-2">
                             <div class="minimal-contact-header">
-                                <h3 class="detail-heading" style="margin-bottom: 0;">Feel free to reach out!</h3>
+                                <h3 class="detail-heading mb-0">Feel free to reach out!</h3>
                                 <div class="minimal-contact-line"></div>
                             </div>
                             
                             <ul class="minimal-contact-list">
-                                <li style="display: flex; align-items: center; padding-left: 0;">
+                                <li>
                                     <a onclick="copyEmail(event)" class="minimal-contact-link">Email <span>↗</span></a>
                                     <span id="email-feedback" class="copy-feedback">Copied to clipboard!</span>
                                 </li>
-                                <li style="padding-left: 0;"><a href="#" class="minimal-contact-link">Resume <span>↗</span></a></li>
-                                <li style="padding-left: 0;"><a href="https://www.linkedin.com/in/ruth-ezeneche/" target="_blank" class="minimal-contact-link">Linkedin <span>↗</span></a></li>
+                                <li><a href="#" class="minimal-contact-link">Resume <span>↗</span></a></li>
+                                <li><a href="https://www.linkedin.com/in/ruth-ezeneche/" target="_blank" class="minimal-contact-link">Linkedin <span>↗</span></a></li>
                             </ul>
                             <script>
                                 function copyEmail(e) {

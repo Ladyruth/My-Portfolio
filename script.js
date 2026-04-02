@@ -21,8 +21,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // We will soon add:
-    // 1. Intersection Observer for elements fading in seamlessly on scroll
-    // 2. Custom magnetic cursor effects for the buttons
-    // 3. Parallax effect for the background orbs on mouse movement
+    // Case Studies Tab Logic
+    const tabBtns = document.querySelectorAll('.cs-tab-btn');
+    const tabContents = document.querySelectorAll('.cs-tab-content');
+
+    function activateTab(tabId) {
+        if (!tabId) return;
+        
+        // Remove active class from all buttons and contents
+        tabBtns.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Add active class to the matched button and content
+        const activeBtn = document.querySelector(`.cs-tab-btn[data-target="${tabId}"]`);
+        const activeContent = document.getElementById(tabId);
+
+        if (activeBtn && activeContent) {
+            activeBtn.classList.add('active');
+            activeContent.classList.add('active');
+            
+            // On mobile, scroll to top of content
+            if (window.innerWidth < 768) {
+                window.scrollTo({
+                    top: document.querySelector('.cs-dashboard').offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+    }
+
+    if (tabBtns.length > 0) {
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const targetId = e.target.getAttribute('data-target');
+                activateTab(targetId);
+                // Update URL quietly
+                history.pushState(null, null, '#' + targetId);
+            });
+        });
+
+        // Check if there's a hash in the URL on load
+        const hash = window.location.hash.replace('#', '');
+        if (hash) {
+            activateTab(hash);
+        }
+    }
 });
