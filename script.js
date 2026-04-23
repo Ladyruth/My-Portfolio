@@ -56,6 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
         tabBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const targetId = e.target.getAttribute('data-target');
+
+                // If the data-target is an external URL, open it in a new tab
+                if (targetId.startsWith('http')) {
+                    window.open(targetId, '_blank');
+                    return;
+                }
+
                 activateTab(targetId);
                 // Update URL quietly
                 history.pushState(null, null, '#' + targetId);
