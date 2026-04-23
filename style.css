@@ -590,6 +590,49 @@ h4 {
     font-size: 0.9rem;
 }
 
+.footer-email-text {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.copy-email {
+    position: relative;
+    color: var(--text-primary);
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: rgba(188, 60, 216, 0.5);
+    text-underline-offset: 4px;
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+.copy-email:hover {
+    color: #BC3CD8;
+    text-decoration-color: #BC3CD8;
+}
+
+.copy-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: #BC3CD8;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.copy-email.copied .copy-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-6px);
+}
+
 /* -------------------
    PREMIUM CASE STUDY (Converseo)
 ------------------- */

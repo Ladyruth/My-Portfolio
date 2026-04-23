@@ -75,4 +75,18 @@ document.addEventListener('DOMContentLoaded', () => {
             activateTab(hash);
         }
     }
+
+    // Copy Email to Clipboard
+    const copyEmailEl = document.getElementById('copyEmail');
+    if (copyEmailEl) {
+        copyEmailEl.addEventListener('click', () => {
+            const email = copyEmailEl.getAttribute('data-email');
+            navigator.clipboard.writeText(email).then(() => {
+                copyEmailEl.classList.add('copied');
+                setTimeout(() => {
+                    copyEmailEl.classList.remove('copied');
+                }, 2000);
+            });
+        });
+    }
 });
